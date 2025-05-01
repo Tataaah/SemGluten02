@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Work Sans', sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+body {
+  @apply bg-offWhite text-gray-800;
+}
+
+.container {
+  @apply px-4 md:px-6 mx-auto max-w-7xl;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center px-6 py-3 text-base font-medium transition-all duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+.btn-primary {
+  @apply bg-terracota hover:bg-terracota-dark text-white font-semibold shadow-md hover:shadow-lg focus:ring-terracota/50;
+}
+
+.section {
+  @apply py-12 md:py-20;
+}
+
+.card {
+  @apply bg-white/80 backdrop-blur-sm rounded-lg border border-cinzaAreia shadow-md p-6;
+}
+
+.feature-card {
+  @apply bg-begeNatural/30 backdrop-blur-sm rounded-lg border border-begeNatural p-5 transition-all duration-300 hover:shadow-md;
+}
+
+.testimonial-card {
+  @apply bg-white/90 backdrop-blur-sm rounded-lg border border-cinzaAreia shadow-sm p-6 transition-all duration-300 hover:shadow-md;
+}
+
+.faq-card {
+  @apply bg-white/90 backdrop-blur-sm rounded-lg border border-cinzaAreia shadow-sm p-6 transition-all duration-300 hover:shadow-md;
+}
+
+.guarantee-card {
+  @apply bg-green-50/80 backdrop-blur-sm rounded-lg border-2 border-green-500 shadow-md p-6;
+}
+
+.countdown-badge {
+  @apply bg-terracota/90 backdrop-blur-sm text-white px-4 py-2 rounded-full font-semibold shadow-md;
+}
+
+.star-rating {
+  @apply text-yellow-400 flex;
+}
