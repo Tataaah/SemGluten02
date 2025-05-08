@@ -9,22 +9,25 @@ export default {
         cinzaPardo: '#AFA89B',
         begeNatural: '#E2C9A5',
         carameloClaro: '#C69C6D',
-        terracota: {
-          DEFAULT: '#B67E5E',
-          dark: '#A66E4E'
-        }
+        terracota: '#B67E5E',
+        terracotaHover: '#A66E4E',
+        success: '#4CAF50',
+        warning: '#FF9800',
+        error: '#F44336',
       },
       fontFamily: {
-        sans: ['Work Sans', 'sans-serif'],
-        serif: ['Playfair Display', 'serif']
-      },
-      animation: {
-        'bounce-slow': 'bounce 3s ease-in-out infinite',
-        'pulse-slow': 'pulse 3s ease-in-out infinite',
+        playfair: ['Playfair Display', 'serif'],
+        workSans: ['Work Sans', 'sans-serif'],
       },
       backgroundImage: {
-        'hero-pattern': "url('https://i.im.ge/2025/05/01/vwveZ4.img-bolos.md.jpeg')"
-      }
+        'cake-pattern': "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBkPSJNMzAgNjBMMCAwaDYweiIgZmlsbC1vcGFjaXR5PSIuMDMiLz48L3N2Zz4=')",
+      },
+      animation: {
+        fadeIn: 'fadeIn 1s ease-out',
+        slideUp: 'slideUp 0.8s ease-out',
+        bounceSlow: 'bounce 3s infinite',
+        pulseSlow: 'pulse 2s infinite',
+      },
     },
   },
   plugins: [],

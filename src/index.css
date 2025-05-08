@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,59 +6,86 @@
 
 @layer base {
   html {
-    font-family: 'Work Sans', sans-serif;
     scroll-behavior: smooth;
   }
   
+  body {
+    @apply bg-offWhite text-gray-800 font-workSans;
+  }
+
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    @apply font-playfair font-semibold;
   }
 }
 
-body {
-  @apply bg-offWhite text-gray-800;
+@layer components {
+  .container-custom {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section {
+    @apply py-12 md:py-16;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-center mb-8 font-playfair;
+  }
+  
+  .card {
+    @apply bg-white/80 backdrop-blur-sm rounded-xl border border-cinzaAreia shadow-md overflow-hidden transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-terracota hover:bg-terracota/90 text-white font-semibold py-3 px-6 rounded-lg 
+           shadow-md transition-all duration-300 transform hover:scale-105 
+           flex items-center justify-center gap-2 text-center;
+  }
+
+  .btn-large {
+    @apply text-lg py-4 px-8;
+  }
+
+  .fade-in {
+    @apply animate-fadeIn;
+  }
+
+  .slide-up {
+    @apply animate-slideUp;
+  }
 }
 
-.container {
-  @apply px-4 md:px-6 mx-auto max-w-7xl;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.btn {
-  @apply inline-flex items-center justify-center px-6 py-3 text-base font-medium transition-all duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2;
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
-.btn-primary {
-  @apply bg-terracota hover:bg-terracota-dark text-white font-semibold shadow-md hover:shadow-lg focus:ring-terracota/50;
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-.section {
-  @apply py-12 md:py-20;
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
 
-.card {
-  @apply bg-white/80 backdrop-blur-sm rounded-lg border border-cinzaAreia shadow-md p-6;
+.animate-fadeIn {
+  animation: fadeIn 1s ease-out;
 }
 
-.feature-card {
-  @apply bg-begeNatural/30 backdrop-blur-sm rounded-lg border border-begeNatural p-5 transition-all duration-300 hover:shadow-md;
+.animate-slideUp {
+  animation: slideUp 0.8s ease-out;
 }
 
-.testimonial-card {
-  @apply bg-white/90 backdrop-blur-sm rounded-lg border border-cinzaAreia shadow-sm p-6 transition-all duration-300 hover:shadow-md;
+.animate-bounce-slow {
+  animation: bounce 3s infinite;
 }
 
-.faq-card {
-  @apply bg-white/90 backdrop-blur-sm rounded-lg border border-cinzaAreia shadow-sm p-6 transition-all duration-300 hover:shadow-md;
-}
-
-.guarantee-card {
-  @apply bg-green-50/80 backdrop-blur-sm rounded-lg border-2 border-green-500 shadow-md p-6;
-}
-
-.countdown-badge {
-  @apply bg-terracota/90 backdrop-blur-sm text-white px-4 py-2 rounded-full font-semibold shadow-md;
-}
-
-.star-rating {
-  @apply text-yellow-400 flex;
+.animate-pulse-slow {
+  animation: pulse 2s infinite;
 }

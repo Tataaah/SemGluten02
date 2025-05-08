@@ -1,53 +1,33 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowDownRight } from 'lucide-react';
+import { ChevronRight, ArrowDown } from 'lucide-react';
+import PrimaryButton from './ui/PrimaryButton';
 
-const FinalCta: React.FC = () => {
-  const handleBuyClick = () => {
-    window.open('https://pay.kirvano.com/0ba8de89-e236-4edb-bf3b-ccb4f33ea5e2', '_blank');
-  };
-
+const FinalCta = () => {
   return (
-    <section className="section bg-gradient-to-b from-begeNatural/20 to-carameloClaro/20">
-      <div className="container">
-        <motion.div 
-          className="text-center max-w-3xl mx-auto mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+    <section className="section bg-gradient-to-b from-offWhite to-begeNatural/30 py-16">
+      <div className="container-custom">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-800">
             DESVENDE OS SEGREDOS DOS BOLOS SEM GLÚTEN PERFEITOS E SABOREIE HOJE MESMO!
           </h2>
           
-          <motion.button
-            className="btn btn-primary text-lg md:text-xl px-8 py-4 mb-6"
-            onClick={handleBuyClick}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            BAIXAR MINHA CÓPIA
-          </motion.button>
+          <div className="mb-6">
+            <PrimaryButton
+              href="https://pay.kirvano.com/0ba8de89-e236-4edb-bf3b-ccb4f33ea5e2"
+              className="btn-large mx-auto"
+            >
+              BAIXAR MINHA CÓPIA <ChevronRight size={20} />
+            </PrimaryButton>
+          </div>
           
           <div className="relative">
-            <p className="font-medium text-xl text-terracota">Acesso imediato</p>
-            <motion.div 
-              className="absolute -top-1 -right-10 md:right-20"
-              animate={{ 
-                x: [0, 10, 0],
-                y: [0, -5, 0]
-              }}
-              transition={{ 
-                duration: 1.5,
-                repeat: Infinity,
-                repeatType: "reverse"
-              }}
-            >
-              <ArrowDownRight className="h-8 w-8 text-terracota transform rotate-180" />
-            </motion.div>
+            <h3 className="text-xl font-semibold mb-2">Acesso imediato</h3>
+            <ArrowDown 
+              size={30} 
+              className="absolute -top-10 right-1/4 text-terracota animate-bounce-slow"
+            />
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

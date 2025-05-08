@@ -1,73 +1,49 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
+import PrimaryButton from './ui/PrimaryButton';
+import StarRating from './ui/StarRating';
 
-const Hero: React.FC = () => {
-  const handleBuyClick = () => {
-    window.open('https://pay.kirvano.com/0ba8de89-e236-4edb-bf3b-ccb4f33ea5e2', '_blank');
-  };
-
+const Hero = () => {
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-hero-pattern bg-cover bg-center opacity-30"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-offWhite/80 via-offWhite/70 to-offWhite/95 backdrop-blur-[2px]"></div>
-      
-      <div className="container relative z-10 py-16 md:py-24">
-        <motion.div 
-          className="max-w-3xl mx-auto text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-        >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4 leading-tight">
-            SEM GLÚTEN - Bolos simples e fofinhos
+      {/* Background Image with Overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+        style={{ 
+          backgroundImage: "url('https://i.im.ge/2025/05/01/vwveZ4.img-bolos.md.jpeg')",
+          filter: "brightness(0.6)"
+        }}
+      />
+
+      {/* Content Container with Glass Effect */}
+      <div className="container-custom relative z-10">
+        <div className="max-w-3xl mx-auto text-center bg-white/70 backdrop-blur-md rounded-2xl p-8 md:p-12 border border-begeNatural shadow-xl animate-fadeIn">
+          <h1 className="text-3xl md:text-5xl font-bold mb-4 text-terracota">
+            SEM GLÚTEN<br />
+            <span className="text-gray-800">Bolos simples e fofinhos</span>
           </h1>
           
-          <h2 className="text-xl md:text-2xl text-cinzaPardo font-medium mb-6">
+          <h2 className="text-xl md:text-2xl font-medium mb-5 text-gray-700">
             Receitas Fáceis E Deliciosas Para Todos Os Amantes De Bolos
           </h2>
           
-          <div className="star-rating justify-center mb-8">
-            <span className="text-2xl">★★★★★</span>
+          <div className="mb-6">
+            <StarRating value={5} />
           </div>
           
-          <motion.button
-            className="btn btn-primary text-lg md:text-xl px-8 py-4 mb-8"
-            onClick={handleBuyClick}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
+          <PrimaryButton
+            href="https://pay.kirvano.com/0ba8de89-e236-4edb-bf3b-ccb4f33ea5e2"
+            className="btn-large mx-auto mb-6"
           >
             BAIXAR MINHA CÓPIA
-          </motion.button>
+          </PrimaryButton>
           
-          <motion.div 
-            className="max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.7 }}
-          >
-            <div className="card grid grid-cols-1 md:grid-cols-3 gap-4 p-6">
-              <div className="flex flex-col items-center p-4 border-b md:border-b-0 md:border-r border-cinzaAreia">
-                <h3 className="font-medium text-center">Receitas Testadas E Aprovadas</h3>
-              </div>
-              <div className="flex flex-col items-center p-4 border-b md:border-b-0 md:border-r border-cinzaAreia">
-                <h3 className="font-medium text-center">Sem Leite E Sem Açúcar</h3>
-              </div>
-              <div className="flex flex-col items-center p-4">
-                <h3 className="font-medium text-center">Ingredientes Acessíveis</h3>
-              </div>
-            </div>
-          </motion.div>
-          
-          <motion.div 
-            className="mt-16 animate-bounce-slow"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 0.5 }}
-          >
-            <ArrowDown className="mx-auto h-8 w-8 text-terracota" />
-          </motion.div>
-        </motion.div>
+          <ChevronDown 
+            size={36} 
+            className="text-terracota mx-auto animate-bounce-slow cursor-pointer" 
+            onClick={() => window.scrollTo({top: window.innerHeight, behavior: 'smooth'})}
+          />
+        </div>
       </div>
     </section>
   );

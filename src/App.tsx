@@ -1,30 +1,28 @@
 import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Features from './components/Features';
+import Benefits from './components/Benefits';
 import Faq from './components/Faq';
 import HowToReceive from './components/HowToReceive';
 import Testimonials from './components/Testimonials';
 import Guarantee from './components/Guarantee';
 import FinalCta from './components/FinalCta';
 import Footer from './components/Footer';
-import SaleNotifications from './components/SaleNotifications';
+import SalesNotifications from './components/ui/SalesNotifications';
 
 function App() {
   return (
-    <div className="min-h-screen bg-offWhite">
+    <div className="min-h-screen bg-offWhite font-sans">
       <Header />
-      <main>
-        <Hero />
-        <Features />
-        <Faq />
-        <HowToReceive />
-        <Testimonials />
-        <Guarantee />
-        <FinalCta />
-      </main>
+      <Hero />
+      <Benefits />
+      <Faq />
+      <HowToReceive />
+      <Testimonials />
+      <Guarantee />
+      <FinalCta />
       <Footer />
-      <SaleNotifications />
+      <SalesNotifications />
     </div>
   );
 }

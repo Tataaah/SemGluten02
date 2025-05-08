@@ -1,56 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { format } from 'date-fns';
-import ptBR from 'date-fns/locale/pt-BR';
-import { Clock } from 'lucide-react';
+import { Timer } from 'lucide-react';
+import { formatDate } from '../utils/formatDate';
+import CountdownTimer from './ui/CountdownTimer';
 
-const Header: React.FC = () => {
-  const [currentDate, setCurrentDate] = useState<Date>(new Date());
-  const [timeLeft, setTimeLeft] = useState({
-    minutes: 30,
-    seconds: 0
-  });
-
-  // Update current date
+const Header = () => {
+  const [isSticky, setIsSticky] = useState(false);
+  const currentDate = formatDate(new Date());
+  
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentDate(new Date());
-    }, 1000);
-    return () => clearInterval(interval);
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 50);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
-  // Countdown timer
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (timeLeft.seconds > 0) {
-        setTimeLeft(prev => ({
-          ...prev,
-          seconds: prev.seconds - 1
-        }));
-      } else if (timeLeft.minutes > 0) {
-        setTimeLeft({
-          minutes: timeLeft.minutes - 1,
-          seconds: 59
-        });
-      } else {
-        clearInterval(interval);
-      }
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [timeLeft]);
-
-  const formattedDate = format(currentDate, "dd 'de' MMMM 'de' yyyy", { locale: ptBR });
-  
   return (
-    <header className="sticky top-0 z-50 bg-offWhite/95 backdrop-blur-sm shadow-sm">
-      <div className="container py-3 flex flex-col md:flex-row justify-between items-center">
-        <div className="text-cinzaPardo text-sm mb-2 md:mb-0">
-          <span className="font-medium">ATUALIZADO EM:</span> {formattedDate}
-        </div>
-        
-        <div className="countdown-badge flex items-center gap-2 animate-pulse-slow">
-          <Clock className="h-4 w-4" />
-          <span className="font-bold">A OFERTA ACABA EM:</span>
-          <span className="font-mono">{`${timeLeft.minutes.toString().padStart(2, '0')}:${timeLeft.seconds.toString().padStart(2, '0')}`}</span>
+    <header className={`w-full ${isSticky ? 'fixed top-0 left-0 right-0 bg-offWhite/90 backdrop-blur-md shadow-md z-50 py-2' : 'py-4'} transition-all duration-300`}>
+      <div className="container-custom">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-3">
+          <p className="text-sm text-gray-600 font-medium">
+            ATUALIZADO EM: <span className="font-semibold">{currentDate}</span>
+          </p>
+          
+          <div className="flex items-center gap-2 bg-terracota/90 text-white px-4 py-2 rounded-full animate-pulse-slow">
+            <Timer size={18} />
+            <p className="text-sm font-semibold">A OFERTA ACABA EM:</p>
+            <CountdownTimer initialMinutes={30} initialSeconds={0} />
+          </div>
         </div>
       </div>
     </header>
